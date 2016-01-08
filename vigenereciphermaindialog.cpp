@@ -24,7 +24,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "trace.h"
 
 ribi::VigenereCipherMainDialog::VigenereCipherMainDialog(const std::string& key) noexcept
-  : m_vigenerecipher(new VigenereCipher(key)),
+  : m_vigenerecipher(key),
     m_encrypted_text{},
     m_key(key),
     m_plain_text{}
@@ -36,12 +36,12 @@ ribi::VigenereCipherMainDialog::VigenereCipherMainDialog(const std::string& key)
 
 void ribi::VigenereCipherMainDialog::Deencrypt() noexcept
 {
-  m_plain_text = m_vigenerecipher->Deencrypt(m_encrypted_text);
+  m_plain_text = m_vigenerecipher.Deencrypt(m_encrypted_text);
 }
 
 void ribi::VigenereCipherMainDialog::Encrypt() noexcept
 {
-  m_encrypted_text = m_vigenerecipher->Encrypt(m_plain_text);
+  m_encrypted_text = m_vigenerecipher.Encrypt(m_plain_text);
 }
 
 void ribi::VigenereCipherMainDialog::SetEncryptedText(const std::string& s) noexcept
@@ -51,7 +51,7 @@ void ribi::VigenereCipherMainDialog::SetEncryptedText(const std::string& s) noex
 
 void ribi::VigenereCipherMainDialog::SetKey(const std::string& s) noexcept
 {
-  m_vigenerecipher.reset(new VigenereCipher(s));
+  m_vigenerecipher = VigenereCipher(s);
 }
 
 void ribi::VigenereCipherMainDialog::SetPlainText(const std::string& s) noexcept

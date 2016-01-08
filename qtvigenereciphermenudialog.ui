@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>264</width>
-    <height>298</height>
+    <width>365</width>
+    <height>438</height>
    </rect>
   </property>
   <property name="font">
@@ -19,7 +19,7 @@
    <string>VigenereCipher</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ToolVigenereCipher.qrc">
+   <iconset resource="VigenereCipher.qrc">
     <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
   </property>
   <property name="styleSheet">
@@ -31,17 +31,7 @@ QPushButton { color: rgb(0,0,0); }
 QPushButton { font: 48px  }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QPushButton" name="button_start">
-     <property name="text">
-      <string>&amp;Start</string>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QPushButton" name="button_quit">
      <property name="text">
       <string>&amp;Quit</string>
@@ -51,7 +41,7 @@ QPushButton { font: 48px  }</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <widget class="QPushButton" name="button_about">
      <property name="text">
       <string>&amp;About</string>
@@ -61,14 +51,35 @@ QPushButton { font: 48px  }</string>
      </property>
     </widget>
    </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="button_start">
+     <property name="text">
+      <string>&amp;Start</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="VigenereCipher.qrc">:/images/VigenereCipherMenu.png</pixmap>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>button_start</tabstop>
+  <tabstop>button_about</tabstop>
   <tabstop>button_quit</tabstop>
  </tabstops>
  <resources>
-  <include location="ToolVigenereCipher.qrc"/>
+  <include location="VigenereCipher.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>376</width>
-    <height>118</height>
+    <width>321</width>
+    <height>107</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>VigenereCipher</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="ToolVigenereCipher.qrc">
+   <iconset resource="VigenereCipher.qrc">
     <normaloff>:/images/R.png</normaloff>:/images/R.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -24,7 +24,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ToolVigenereCipher.qrc">:/images/ToolVigenereCipherArrowUp34x34.png</pixmap>
+      <pixmap resource="VigenereCipher.qrc">:/images/VigenereCipherArrowUp16x16.png</pixmap>
      </property>
     </widget>
    </item>
@@ -48,7 +48,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="ToolVigenereCipher.qrc">:/images/ToolVigenereCipherArrowDown34x34.png</pixmap>
+      <pixmap resource="VigenereCipher.qrc">:/images/VigenereCipherArrowDown16x16.png</pixmap>
      </property>
     </widget>
    </item>
@@ -80,7 +80,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="ToolVigenereCipher.qrc"/>
+  <include location="VigenereCipher.qrc"/>
  </resources>
  <connections/>
 </ui>

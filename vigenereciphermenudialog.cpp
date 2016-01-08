@@ -28,7 +28,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <boost/lexical_cast.hpp>
 
 #include "loopreader.h"
-#include "richelbilderbeekprogram.h"
 #include "vigenerecipher.h"
 #include "testtimer.h"
 #include "vigenereciphermaindialog.h"
@@ -125,29 +124,22 @@ ribi::Help ribi::VigenereCipherMenuDialog::GetHelp() const noexcept
       Help::Option('s',"silent","silence output, used for debugging")
     },
     {
-      "VigenereCipher -k \"KEY\" --text \"HELLOWORLD\"",
-      "VigenereCipher -k \"LEMON\" --cipher \"HELLOWORLD\""
+      "VigenereCipher -k \"key\" --text \"helloworld\"",
+      "VigenereCipher -k \"lemon\" --cipher \"helloworld\""
     }
   );
 }
 
-boost::shared_ptr<const ribi::Program> ribi::VigenereCipherMenuDialog::GetProgram() const noexcept
-{
-  const boost::shared_ptr<const ribi::Program> p(new ProgramVigenereCipher);
-  assert(p);
-  return p;
-
-}
-
 std::string ribi::VigenereCipherMenuDialog::GetVersion() const noexcept
 {
-  return "1.0";
+  return "2.0";
 }
 
 std::vector<std::string> ribi::VigenereCipherMenuDialog::GetVersionHistory() const noexcept
 {
   return {
-    "2014-04-01: Version 1.0: initial version, copied from CaesarCipher"
+    "2014-04-01: Version 1.0: initial version, copied from CaesarCipher",
+    "2016-01-08: Version 2.0: moved to own GitHub",
   };
 }
 
@@ -159,13 +151,17 @@ void ribi::VigenereCipherMenuDialog::Test() noexcept
     if (is_tested) return;
     is_tested = true;
   }
+  {
+    VigenereCipher("apple");
+    VigenereCipherMainDialog("pear");
+  }
   const TestTimer test_timer(__func__,__FILE__,1.0);
   {
     VigenereCipherMenuDialog d;
-    d.Execute( {"VigenereCipher", "-k", "A", "--text", "HELLOWORLD", "-s" } );
-    d.Execute( {"VigenereCipher", "-k", "AB", "--text", "HELLOWORLD", "-s" } );
-    d.Execute( {"VigenereCipher", "-k", "ABC", "--text", "HELLOWORLD", "-s" } );
-    d.Execute( {"VigenereCipher", "-k", "ABCDEF", "--cipher", "HELLOWORLD", "-s" } );
+    d.Execute( {"VigenereCipher", "-k", "a", "--text", "helloworld", "-s" } );
+    d.Execute( {"VigenereCipher", "-k", "ab", "--text", "helloworld", "-s" } );
+    d.Execute( {"VigenereCipher", "-k", "abc", "--text", "helloworld", "-s" } );
+    d.Execute( {"VigenereCipher", "-k", "abcdef", "--cipher", "helloworld", "-s" } );
   }
 }
 #endif

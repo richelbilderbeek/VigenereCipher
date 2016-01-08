@@ -23,7 +23,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 #include <string>
 #include <vector>
-#include <boost/scoped_ptr.hpp>
 #include "about.h"
 #include "vigenerecipher.h"
 
@@ -44,7 +43,7 @@ struct VigenereCipherMainDialog
   void SetPlainText(const std::string& s) noexcept;
 
   private:
-  boost::scoped_ptr<VigenereCipher> m_vigenerecipher;
+  VigenereCipher m_vigenerecipher;
   std::string m_encrypted_text;
   std::string m_key;
   std::string m_plain_text;
