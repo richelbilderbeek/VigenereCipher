@@ -27,7 +27,9 @@ install:
   # SLOCcount
   - sudo apt-get install sloccount
 
+
 script: 
+  - ./download_other_githubs
   # Console
   - qmake VigenereCipherConsole.pro
   - make debug
