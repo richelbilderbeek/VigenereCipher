@@ -38,10 +38,10 @@ script:
   - qmake VigenereCipherDesktop.pro
   - make debug
   # helgrind
-  - valgrind --tool=helgrind --log-file=helgrind.log -v ./VigenereCipherConsole
+  - valgrind --tool=helgrind --log-file=helgrind.log -v ./VigenereCipherConsole --key "lemon" --text "helloworld"
   - cat helgrind.log
   # memcheck
-  - valgrind --leak-check=full -v --show-reachable=yes --log-file=memcheck.log ./VigenereCipherConsole
+  - valgrind --leak-check=full -v --show-reachable=yes --log-file=memcheck.log ./VigenereCipherConsole --key "lemon" --text "helloworld"
   - cat memcheck.log
   # Get code coverage
   - ./get_code_cov >/dev/null
