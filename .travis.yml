@@ -33,18 +33,18 @@ script:
   # Console
   - qmake VigenereCipherConsole.pro
   - make debug
-  - ./VigenereCipherConsole
+  - ./VigenereCipherConsole --key "lemon" --text "helloworld"
   # Build and run the tests
   - qmake VigenereCipherDesktop.pro
   - make debug
   # helgrind
-  - valgrind --tool=helgrind --log-file=helgrind.log -v ./VigenereCipher
+  - valgrind --tool=helgrind --log-file=helgrind.log -v ./VigenereCipherConsole
   - cat helgrind.log
   # memcheck
-  - valgrind --leak-check=full -v --show-reachable=yes --log-file=memcheck.log ./VigenereCipher
+  - valgrind --leak-check=full -v --show-reachable=yes --log-file=memcheck.log ./VigenereCipherConsole
   - cat memcheck.log
   # Get code coverage
-  - ./get_code_cov
+  - ./get_code_cov >/dev/null
   - codecov
   # Call OCLint
   - ./do_oclint
