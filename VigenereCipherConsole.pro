@@ -2,7 +2,7 @@ SOURCES += main.cpp
 
 include(../RibiLibraries/GeneralConsole.pri)
 
-include(../RibiClasses/CppVigenereCipher/CppVigenereCipher.pri)
+include(VigenereCipher.pri)
 include(../RibiClasses/CppLoopReader/CppLoopReader.pri)
 
 include(../VigenereCipher/VigenereCipherConsole.pri)

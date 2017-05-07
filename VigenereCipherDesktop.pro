@@ -4,7 +4,7 @@ include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
 
 
-include(../RibiClasses/CppVigenereCipher/CppVigenereCipher.pri)
+include(VigenereCipher.pri)
 include(../RibiClasses/CppLoopReader/CppLoopReader.pri)
 include(../VigenereCipher/VigenereCipherDesktop.pri)
 
