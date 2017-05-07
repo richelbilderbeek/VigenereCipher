@@ -1,12 +1,5 @@
-INCLUDEPATH += \
-    ../RibiClasses/CppVigenereCipher
+INCLUDEPATH += $$PWD
 
-SOURCES += \
-    ../RibiClasses/CppVigenereCipher/vigenerecipher.cpp
+SOURCES += $$PWD/vigenerecipher.cpp
 
-HEADERS  += \
-    ../RibiClasses/CppVigenereCipher/vigenerecipher.h
-
-OTHER_FILES += \
-    ../RibiClasses/CppVigenereCipher/Licence.txt
-
+HEADERS  += $$PWD/vigenerecipher.h

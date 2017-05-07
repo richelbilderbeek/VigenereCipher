@@ -1,8 +1,13 @@
 SOURCES += qtmain.cpp
 
-include(../RibiLibraries/GeneralConsole.pri)
-include(../RibiLibraries/GeneralDesktop.pri)
-
+include(../RibiClasses/CppAbout/CppAbout.pri)
+include(../RibiClasses/CppFileIo/CppFileIo.pri)
+include(../RibiClasses/CppHelp/CppHelp.pri)
+include(../RibiClasses/CppMenuDialog/CppMenuDialog.pri)
+include(../RibiClasses/CppTestTimer/CppTestTimer.pri)
+include(../RibiClasses/CppTrace/CppTrace.pri)
+include(../RibiClasses/CppQtAboutDialog/CppQtAboutDialog.pri)
+include(../RibiClasses/CppQtHideAndShowDialog/CppQtHideAndShowDialog.pri)
 
 include(VigenereCipher.pri)
 include(../RibiClasses/CppLoopReader/CppLoopReader.pri)
@@ -35,3 +40,6 @@ CONFIG(debug, debug|release) {
   QMAKE_LFLAGS += -fsanitize=undefined
   LIBS += -lubsan
 }
+
+# Qt
+QT += core gui widgets

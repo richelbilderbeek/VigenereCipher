@@ -32,20 +32,9 @@ struct VigenereCipher
 {
   VigenereCipher(const std::string& s);
 
-  ///Creates a clean string, which is a
-  ///lowercasenospaces string
-  static std::string Clean(const std::string& s) noexcept;
-
-  std::string Deencrypt(std::string s) const noexcept;
+  std::string Deencrypt(std::string s) const;
 
   std::string Encrypt(std::string s) const;
-
-  static std::string GetVersion() noexcept;
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
-  ///Checks if string is clean, which is a
-  ///lowercasenospaces string. Use Clean to make it so.
-  static bool IsClean(const std::string& s) noexcept;
 
   private:
   //Non-const to allow default copying
@@ -54,12 +43,23 @@ struct VigenereCipher
   char Encrypt(const char c, const int d) const noexcept;
   char Deencrypt(const char c, const int d) const noexcept;
 
-  static std::vector<int> StrToKey(const std::string& s) noexcept;
 
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
+
+///Creates a clean string, which is a
+///lowercasenospaces string
+std::string Clean(const std::string& s) noexcept;
+
+std::string GetVigenereCipherVersion() noexcept;
+std::vector<std::string> GetVigenereCipherVersionHistory() noexcept;
+
+///Checks if string is clean, which is a
+///lowercasenospaces string. Use Clean to make it so.
+bool IsClean(const std::string& s) noexcept;
+
+std::vector<int> StrToKey(const std::string& s) noexcept;
+
+void TestVigenereCipher() noexcept;
 
 } //~namespace ribi
 

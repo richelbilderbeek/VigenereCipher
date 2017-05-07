@@ -107,7 +107,7 @@ ribi::About ribi::VigenereCipherMenuDialog::GetAbout() const noexcept
     "http://www.richelbilderbeek.nl/ToolVigenereCipher.htm",
     GetVersion(),
     GetVersionHistory());
-  a.AddLibrary("VigenereCipher version: " + VigenereCipher::GetVersion());
+  a.AddLibrary("VigenereCipher version: " + GetVigenereCipherVersion());
   a.AddLibrary("LoopReader version: " + LoopReader<int>::GetVersion());
   return a;
 }
