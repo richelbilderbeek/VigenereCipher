@@ -1,0 +1,57 @@
+language: cpp
+compiler: gcc
+dist: trusty
+
+# Boost
+addons: 
+  apt: 
+    packages: libboost-all-dev
+
+before_install:
+  # C++14
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+  # Codecov
+  - sudo pip install codecov
+  # OCLint
+  - ./install_oclint
+
+install: 
+  # C++14
+  - sudo apt-get install -qq g++-5
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
+  # Codecov
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+  # valgrind, for helgrind and memcheck
+  - sudo apt-get install -qq valgrind
+  # SLOCcount
+  - sudo apt-get install sloccount
+
+script: 
+  # Console
+  - qmake VigenereCipherConsole.pro
+  - make debug
+  - ./VigenereCipherConsole
+  # Build and run the tests
+  - qmake VigenereCipherDesktop.pro
+  - make debug
+  # helgrind
+  - valgrind --tool=helgrind --log-file=helgrind.log -v ./VigenereCipher
+  - cat helgrind.log
+  # memcheck
+  - valgrind --leak-check=full -v --show-reachable=yes --log-file=memcheck.log ./VigenereCipher
+  - cat memcheck.log
+  # Get code coverage
+  - ./get_code_cov
+  - codecov
+  # Call OCLint
+  - ./do_oclint
+  # Get my folder
+  - my_github=${PWD##*/}  
+  # SLOCcount
+  - cd ..; sloccount --overhead 1 --personcost 22614 $my_github; cd $my_github
+
+
+after_success:
+  # Codecov
+  - bash <(curl -s https://codecov.io/bash)
