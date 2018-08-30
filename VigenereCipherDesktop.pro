@@ -22,8 +22,13 @@ QMAKE_CXXFLAGS += -std=c++14
 # Fix error: unrecognized option '--push-state--no-as-needed'
 QMAKE_LFLAGS += -fuse-ld=gold
 
-# High warnings levels
-QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Weffc++ -Werror
+# Develop on GNU/Linux
+unix:!macx {
+  # High warning level, warnings are errors
+  # Qt goes bad with -Weffc++
+  QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic
+  QMAKE_CXXFLAGS += -Werror
+}
 
 # Allow debug and release mode
 CONFIG += debug_and_release
