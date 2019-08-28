@@ -11,15 +11,8 @@ include(../RibiClasses/CppLoopReader/CppLoopReader.pri)
 include(VigenereCipher.pri)
 include(VigenereCipherConsole.pri)
 
-# C++14
-CONFIG += c++14
-QMAKE_CXXFLAGS += -std=c++14
-
-# Fix error: unrecognized option '--push-state--no-as-needed'
-QMAKE_LFLAGS += -fuse-ld=gold
-
 # High warnings levels
-QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Weffc++ -Werror
+QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Werror
 
 # Allow debug and release mode
 CONFIG += debug_and_release
