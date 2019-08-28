@@ -1,42 +1,29 @@
 language: cpp
+dist: bionic
 compiler: gcc
-dist: trusty
-
-# Boost
-addons: 
-  apt: 
-    packages: libboost-all-dev
-
-before_install:
-  # C++14
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-  - sudo apt-get update -qq
-  # Codecov
-  - sudo pip install codecov
-  # OCLint
-  - ./install_oclint
 
 install: 
-  # C++14
-  - sudo apt-get install -qq g++-5
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
+  - sudo apt update -qq
+  # Boost
+  - sudo apt install -qq libboost-all-dev
   # Codecov
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+  - sudo pip install codecov
   # valgrind, for helgrind and memcheck
   - sudo apt-get install -qq valgrind
   # SLOCcount
-  - sudo apt-get install sloccount
-
+  - sudo apt-get install -qq sloccount
+  # OCLint
+  - ./install_oclint
 
 script: 
   - ./download_other_githubs
   # Console
   - qmake VigenereCipherConsole.pro
-  - make debug
+  - make debug --silent
   - ./VigenereCipherConsole --key "lemon" --text "helloworld"
   # Build and run the tests
   - qmake VigenereCipherDesktop.pro
-  - make debug
+  - make debug --silent
   # helgrind
   - valgrind --tool=helgrind --log-file=helgrind.log -v ./VigenereCipherConsole --key "lemon" --text "helloworld"
   - cat helgrind.log
@@ -52,7 +39,6 @@ script:
   - my_github=${PWD##*/}  
   # SLOCcount
   - cd ..; sloccount --overhead 1 --personcost 22614 $my_github; cd $my_github
-
 
 after_success:
   # Codecov
